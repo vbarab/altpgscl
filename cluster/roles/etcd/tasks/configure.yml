@@ -1,0 +1,26 @@
+
+- name: Configure Service by copy systemd service file
+  template:
+    src: templates/etcd.service.j2
+    dest: /etc/systemd/system/etcd.service
+
+- name: Teplate config file etcd.conf (REDOS)
+  template:
+    src: templates/etcd.conf.j2
+    dest: /etc/etcd/etcd.conf
+
+- name: Enable and start etcd service
+  ansible.builtin.systemd:
+    daemon_reload: true
+    name: etcd
+    enabled: true
+    state: started
+
+- name: Wait for port 2379 to become open on the host
+  wait_for:
+    port: 2379
+    host: "{{ ansible_default_ipv4.address }}"
+    state: started
+    timeout: 120
+    delay: 10
+  ignore_errors: false

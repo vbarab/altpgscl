@@ -1,0 +1,7 @@
+---
+
+- name: Deploy ETCD cluster
+  become: true
+  hosts: pgscluster
+  roles:
+    - role: etcd

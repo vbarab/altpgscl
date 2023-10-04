@@ -1,0 +1,12 @@
+---
+- name: Create drive and mount
+  include_tasks: tasks/partcreate.yml
+
+- name: Edit hosts file
+  include_tasks: tasks/hostsfile.yml
+
+- name: Install etcd
+  include_tasks: tasks/install_etcd.yml
+
+- name: Configure etcd service
+  include_tasks: tasks/configure.yml

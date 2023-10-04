@@ -1,0 +1,16 @@
+
+- name: install etcd packages
+  apt_rpm:
+    pkg:
+      - etcd
+
+- name: mkdir etcd
+  file:
+    path: /etc/etcd
+    state: directory
+
+- name: Restart etcd services
+  systemd:
+    name: etcd
+    state: stopped
+

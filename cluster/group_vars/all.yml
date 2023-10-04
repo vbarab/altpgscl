@@ -1,0 +1,21 @@
+---
+
+# Application balancers configuration (HaProxy)
+
+application_vip: 192.168.45.208
+postgres_cluster_vip: 192.168.45.209
+postgres_connect_port: 5000
+
+# etcd
+etcd_cluster_name: postgresql_etcd_cluster
+etcd_initial_cluster_token: hfMARYebmgHiVu
+etcd_working_dir: /opt/etcd
+
+ntp_servers:
+  - "ntp0.ntp-servers.net"
+  - "ntp1.ntp-servers.net"
+  - "ntp2.ntp-servers.net"
+  - "ntp3.ntp-servers.net"
+  - "ntp4.ntp-servers.net"
+  - "ntp5.ntp-servers.net"
+  - "ntp6.ntp-servers.net"

@@ -1,0 +1,22 @@
+---
+
+- name: Create dir
+  file:
+    path: /opt/etcd
+    state: directory
+    mode: '0755'
+
+- name: Create partition
+  parted:
+    device: /dev/sdb
+    number: 1
+    state: present
+    fs_type: ext4
+
+- name: Mount partition
+  mount:
+    src: "/dev/sdb1"
+    path: /opt/etcd
+    opts: rw,noatime
+    state: present
+
